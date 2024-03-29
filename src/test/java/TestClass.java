@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -83,7 +84,8 @@ public class TestClass {
 
     }
 
-    @Test public void testvyno3() { // Paieskos testas
+    @Test
+    public void testvyno3() { // Paieskos testas
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[1]/header/div[2]/div/div/div[3]/div/div/div/form/div[1]/div/input")).sendKeys("Energetinis");
         try {
             TimeUnit.SECONDS.sleep(3);// palaukiam 1 sec kol puslapis uzsikraus
@@ -92,9 +94,53 @@ public class TestClass {
             e.printStackTrace();
         }
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[1]/header/div[2]/div/div/div[3]/div/div/div/form/div[1]/button")).click();
-        WebElement textas = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/h1"));
+        ((JavascriptExecutor) _globalDriver).executeScript("window.scrollTo(0, document.body.scrollHeight/2)");
+        try {
+            TimeUnit.SECONDS.sleep(2);// palaukiam 1 sec kol puslapis uzsikraus
 
-                assertEquals(textas.getText(),"Paieškos rezultatai");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement textas = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div/div[1]/div[4]/div[9]/div/div/div[2]/a/span"));
+
+        assertEquals(textas.getText(), "Red Bull 0,25 L");
+        _globalDriver.close();
+
+
+    }
+
+    @Test
+    public void vynoAccountReg() {
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[1]/header/div[2]/div/div/div[4]/nav/div[1]/button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);// palaukiam 1 sec kol puslapis uzsikraus
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div[1]/div/button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);// palaukiam 1 sec kol puslapis uzsikraus
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        _globalDriver.findElement(By.id("firstname")).sendKeys(generateUsername());
+        _globalDriver.findElement(By.id("lastname")).sendKeys(generateUsername());
+        _globalDriver.findElement(By.id("email")).sendKeys(generateRandomEmail());
+        _globalDriver.findElement(By.id("password")).sendKeys("Passwordas1!");
+        _globalDriver.findElement(By.id("password_repeat")).sendKeys("Passwordas1!");
+        _globalDriver.findElement(By.id("phone")).sendKeys("+37061234567");
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[1]/div/div/span[1]/button")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[1]/div/div/span[2]/div/div/button[14]")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[2]/div/div/span[1]/button")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[2]/div/div/span[2]/div/div/button[5]")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[3]/div/div/span[1]/button")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[3]/div/div/span[2]/div/div/button[4]")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[8]/div[1]/div/label/input")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[2]/div/div[2]/button")).click();
 
 
 
