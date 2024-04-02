@@ -304,14 +304,16 @@ public class TestClass {
         }
         WebElement endKaina = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div/div[5]/span"));
         try {
-            TimeUnit.SECONDS.sleep(2);// palaukiam 1 sec kol puslapis uzsikraus
+            TimeUnit.SECONDS.sleep(3);// palaukiam 1 sec kol puslapis uzsikraus
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        WebElement endprekPavadinimas = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/header/div[2]/div/div/div[4]/nav/div[2]/div/div/div[2]/div/div/div[1]/a"));
+        String endprekPavadinimas = _globalDriver.findElement(By.xpath("//html/body/div[1]/div[1]/main/section/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/a")).getText();
         Assert.assertEquals(kaina,endKaina.getText());
-        assertEquals(prekPavadinimas,endprekPavadinimas.getText());
+        assertEquals(prekPavadinimas,endprekPavadinimas);
+        _globalDriver.close();
+
 
 
 
