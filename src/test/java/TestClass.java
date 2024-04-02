@@ -132,19 +132,82 @@ public class TestClass {
         _globalDriver.findElement(By.id("email")).sendKeys(generateRandomEmail());
         _globalDriver.findElement(By.id("password")).sendKeys("Passwordas1!");
         _globalDriver.findElement(By.id("password_repeat")).sendKeys("Passwordas1!");
-        _globalDriver.findElement(By.id("phone")).sendKeys("+37061234567");
+        _globalDriver.findElement(By.id("phone")).sendKeys("61234567");
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[1]/div/div/span[1]/button")).click();
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[1]/div/div/span[2]/div/div/button[14]")).click();
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[2]/div/div/span[1]/button")).click();
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[2]/div/div/span[2]/div/div/button[5]")).click();
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[3]/div/div/span[1]/button")).click();
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[3]/div/div/span[2]/div/div/button[4]")).click();
-        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[8]/div[1]/div/label/input")).click();
-        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[2]/div/div[2]/button")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[8]/div[1]/div/label/span")).click(); // ToS agree
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[2]/div/div[2]/button")).click(); // ToS checkbox
+        try {
+            Thread.sleep(18000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        _globalDriver.findElement(By.id("omnisend-form-63ff1f31b40d6530aba59a6d-close-action")).click(); // add
+        try {
+            Thread.sleep(18000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[4]/div/div/div/button")).click(); // add2
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/form/div[3]/div[2]/button")).click(); // praleisti
+        _globalDriver.close();
+
+
+    }
+
+    @Test
+    public void vynotekaCartOrderTest() {
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[1]/header/div[2]/div/div/div[4]/nav/div[1]/button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);// palaukiam 1 sec kol puslapis uzsikraus
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div[1]/div/button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);// palaukiam 1 sec kol puslapis uzsikraus
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        _globalDriver.findElement(By.id("firstname")).sendKeys(generateUsername());
+        _globalDriver.findElement(By.id("lastname")).sendKeys(generateUsername());
+        _globalDriver.findElement(By.id("email")).sendKeys(generateRandomEmail());
+        _globalDriver.findElement(By.id("password")).sendKeys("Passwordas1!");
+        _globalDriver.findElement(By.id("password_repeat")).sendKeys("Passwordas1!");
+        _globalDriver.findElement(By.id("phone")).sendKeys("61234567");
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[1]/div/div/span[1]/button")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[1]/div/div/span[2]/div/div/button[14]")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[2]/div/div/span[1]/button")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[2]/div/div/span[2]/div/div/button[5]")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[3]/div/div/span[1]/button")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[3]/div/div/span[2]/div/div/button[4]")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[8]/div[1]/div/label/span")).click(); // ToS agree
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[2]/div/div[2]/button")).click(); // ToS checkbox
+        try {
+            Thread.sleep(18100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        _globalDriver.findElement(By.id("omnisend-form-63ff1f31b40d6530aba59a6d-close-action")).click(); // add
+        try {
+            Thread.sleep(18100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[4]/div/div/div/button")).click(); // add2
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/form/div[3]/div[2]/button")).click(); // praleisti
 
 
 
     }
+
 
     public static boolean assertEquals(String actual, String expected) {
         return actual.equals(expected);
